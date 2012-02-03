@@ -1,0 +1,95 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+  <body>
+    <metal:block fill-slot="top_slot"
+                 tal:define="dummy python:request.set('disable_border',1)" />
+
+    <div metal:fill-slot="main">
+      <tal:main-macro metal:define-macro="main">
+
+        <form id="searchform" class="searchPage" action="#"
+              tal:attributes="action request/ACTUAL_URL">
+          <div>
+            <input class="searchPage"
+                   name="SearchableText"
+                   type="text"
+                   size="25"
+                   title="Search Site"
+                   i18n:attributes="title title_search_title;"
+                   tal:attributes="value request/SearchableText|nothing;"
+                   />
+            <input class="searchPage searchButton"
+                   type="submit"
+                   value="Search"
+                   i18n:attributes="value label_search;"/>
+          </div>
+        </form>
+
+        <tal:search tal:condition="view/is_searching">
+          <h1 class="documentFirstHeading">
+            <span i18n:translate="heading_search_results">
+              Search results
+            </span>
+            <span class="discreet">
+              &mdash;
+              <span i18n:translate="batch_x_items_matching_your_criteria">
+                <span i18n:name="number"
+                      tal:omit-tag=""
+                      tal:content="view/count">234</span>
+                items matching your search terms
+              </span>
+            </span>
+          </h1>
+
+          <div tal:condition="not:view/results">
+            <p>
+              <strong i18n:translate="description_no_results_found">
+                No results were found.
+              </strong>
+            </p>
+          </div>
+
+          <div tal:define="desc_length site_properties/search_results_description_length;
+                           desc_ellipsis site_properties/ellipsis;"
+               tal:repeat="results view/results">
+            <h3>
+              <span tal:content="results/label">Label</span>
+              <span class="discreet">
+                &mdash;
+                <span i18n:translate="batch_x_items_matching_your_criteria">
+                  <span i18n:name="number"
+                        tal:omit-tag=""
+                        tal:content="python:len(results)">234</span>
+                  items matching your search terms
+                </span>
+              </span>
+            </h3>
+            <dl class="searchResults">
+              <tal:results repeat="result results">
+                <dt tal:attributes="class python:'contenttype-' + normalizeString(result.portal_type)">
+                  <img tal:define="icon python:plone_view.getIcon(result).html_tag()"
+                       tal:replace="structure icon" />
+                  <a
+                     href="#"
+                     tal:attributes="href result/absolute_url"
+                     tal:content="result/pretty_title_or_id" />
+                </dt>
+                <dd>
+                  <span tal:define="desc result/Description"
+                        tal:replace="python:plone_view.cropText(desc, desc_length, desc_ellipsis)">
+                    Cropped description
+                  </span>
+                </dd>
+              </tal:results>
+            </dl>
+          </div>
+
+
+        </tal:search>
+
+      </tal:main-macro>
+    </div>
+  </body>
+</html>

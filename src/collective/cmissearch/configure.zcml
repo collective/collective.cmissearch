@@ -1,6 +1,27 @@
 <configure
-    xmlns="http://namespaces.zope.org/zope">
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:browser="http://namespaces.zope.org/browser">
 
   <include package="collective.cmisbrowser" />
+
+  <browser:page
+     for="*"
+     name="cmis_search"
+     class=".search.SearchPage"
+     template="templates/searchpage.pt"
+     permission="zope2.View"
+     />
+
+  <adapter
+     for=".interfaces.ISearchContext"
+     provides=".interfaces.ISearchSource"
+     factory=".plone.PloneSearchSource"
+     />
+
+  <adapter
+     for="collective.cmisbrowser.interfaces.ICMISBrowser"
+     provides=".interfaces.ISearchSource"
+     factory=".cmis.CMISSearchSource"
+     />
 
 </configure>
