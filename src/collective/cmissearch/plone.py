@@ -22,11 +22,12 @@ class PloneSearchSource(object):
         self.results = []
 
     def search(self, SearchableText):
-        return self.catalog(SearchableText=SearchableText)
+        self.results = self.catalog(SearchableText=SearchableText)
+        return self.results
 
     def __len__(self):
         return len(self.results)
 
     def __iter__(self):
-        return iter(self.results)
+        return (r.getObject() for r in self.results)
 
