@@ -7,18 +7,23 @@ from zope.interface import implements
 from zope.i18nmessageid import MessageFactory
 
 from collective.cmissearch.interfaces import ISearchSource
+from Products.CMFCore.utils import getToolByName
 
 _ = MessageFactory('collective.cmissearch')
 
 
 class PloneSearchSource(object):
     implements(ISearchSource)
-
-    label = _("Search in Plone")
     priority = 0
+
+    @property
+    def label(self):
+        return _("Search in ${site}",
+                 mapping={'site': self.site.Title()})
 
     def __init__(self, context):
         self.catalog = context.catalog
+        self.site = getToolByName(context.context, 'portal_url').getPortalObject()
         self.results = []
 
     def search(self, SearchableText):

@@ -52,7 +52,9 @@
           </div>
 
           <div tal:define="desc_length site_properties/search_results_description_length;
-                           desc_ellipsis site_properties/ellipsis;"
+                           desc_ellipsis site_properties/ellipsis;
+                           cropText nocall:plone_view/cropText;
+                           normalizeString nocall:context/plone_utils/normalizeString;"
                tal:repeat="results view/results">
             <h3>
               <span tal:content="results/label">Label</span>
@@ -78,7 +80,7 @@
                 </dt>
                 <dd>
                   <span tal:define="desc result/Description"
-                        tal:replace="python:plone_view.cropText(desc, desc_length, desc_ellipsis)">
+                        tal:replace="python:cropText(desc, desc_length, desc_ellipsis)">
                     Cropped description
                   </span>
                 </dd>
