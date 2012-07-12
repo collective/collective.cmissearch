@@ -85,6 +85,10 @@
                   </span>
                 </dd>
               </tal:results>
+              <tal:batch tal:condition="results/batch_size"
+                         tal:define="batch results/batch">
+                <metal:batch metal:use-macro="context/batch_macros/macros/navigation" />
+              </tal:batch>
             </dl>
           </div>
 

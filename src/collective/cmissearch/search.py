@@ -16,6 +16,8 @@ from collective.cmissearch.interfaces import ISearchSource, ISearchContext
 class SearchPage(BrowserView):
     implements(ISearchContext)
 
+    batch_size = 10
+
     def candidates(self):
         yield self
         for browser in self.catalog(meta_type=['CMIS Browser']):
@@ -25,7 +27,12 @@ class SearchPage(BrowserView):
         for candidate in self.candidates():
             source = ISearchSource(candidate, None)
             if source is not None:
-                source.search(SearchableText)
+                batch_position = self.request.get(source.batch_key, 0)
+                try:
+                    batch_position = int(batch_position)
+                except (ValueError, TypeError):
+                    batch_position = 0
+                source.search(SearchableText, batch_position, self.batch_size)
                 yield source
 
     def update(self):
