@@ -20,13 +20,14 @@ class SearchPage(BrowserView):
 
     def candidates(self):
         yield self
-        for browser in self.catalog(meta_type=['CMIS Browser']):
-            yield browser.getObject()
+        for brain in self.catalog(meta_type=['CMIS Browser']):
+            browser = brain.getObject()
+            yield browser
 
     def search(self, SearchableText):
         for candidate in self.candidates():
             source = ISearchSource(candidate, None)
-            if source is not None:
+            if source is not None and source.available:
                 batch_position = self.request.get(source.batch_key, 0)
                 try:
                     batch_position = int(batch_position)

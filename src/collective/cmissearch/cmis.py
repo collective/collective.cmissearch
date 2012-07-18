@@ -5,12 +5,19 @@
 
 import logging
 
-from zope.interface import implements
+from zope.annotation import IAnnotations
+from zope.component import adapts
 from zope.i18nmessageid import MessageFactory
+from zope.interface import implements
+from zope.formlib.form import Fields
 
-from collective.cmissearch.interfaces import ISearchSource
+from plone.app.form.base import EditForm
+
 from collective.cmisbrowser.cmis.api import CMISZopeAPI
 from collective.cmisbrowser.errors import CMISConnectorError
+from collective.cmisbrowser.interfaces import ICMISBrowser
+from collective.cmissearch.interfaces import ICMISSearchConfiguration
+from collective.cmissearch.interfaces import ISearchSource
 
 from Products.CMFPlone.PloneBatch import Batch
 
@@ -20,19 +27,27 @@ logger = logging.getLogger('collective.cmissearch')
 
 class CMISSearchSource(object):
     implements(ISearchSource)
+    adapts(ICMISBrowser)
+
+    def __init__(self, browser):
+        self.browser = browser
+        self.settings = ICMISSearchConfiguration(browser)
+        self.results = []
+        self.batch = []
+        self.batch_key = 'b_' + browser.getId()
+        self.batch_size = None
 
     @property
     def label(self):
         return _(u"Search in ${domain}", mapping={'domain': self.browser.Title()})
 
-    priority = 10
+    @property
+    def priority(self):
+        return self.settings.priority
 
-    def __init__(self, browser):
-        self.browser = browser
-        self.results = []
-        self.batch = []
-        self.batch_key = 'b_' + browser.getId()
-        self.batch_size = None
+    @property
+    def available(self):
+        return self.settings.activated
 
     def search(self, SearchableText, batch_position=None, batch_size=10):
         try:
@@ -52,3 +67,33 @@ class CMISSearchSource(object):
 
     def __iter__(self):
         return iter(self.batch)
+
+
+def annotations(key, default):
+
+    def setter(self, value):
+        self.annotations[key] = value
+
+    def getter(self):
+        return self.annotations.get(key, default)
+
+    return property(getter, setter)
+
+
+class CMISSearchConfiguration(object):
+    adapts(ICMISBrowser)
+    implements(ICMISSearchConfiguration)
+
+    def __init__(self, context):
+        self.context = context
+        self.annotations = IAnnotations(context)
+
+    activated = annotations('collective.cmissearch.activated', True)
+    priority = annotations('collective.cmissearch.priority', 10)
+    score = annotations('collective.cmissearch.score', True)
+
+
+class CMISEditSearchSettings(EditForm):
+    label = _(u"Edit Search settings")
+    description = _(u"Configure search related settings.")
+    form_fields = Fields(ICMISSearchConfiguration)

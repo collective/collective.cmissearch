@@ -1,6 +1,8 @@
 <configure
    xmlns="http://namespaces.zope.org/zope"
-   xmlns:browser="http://namespaces.zope.org/browser">
+   xmlns:browser="http://namespaces.zope.org/browser"
+   xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+   i18n_domain="collective.cmissearch">
 
   <include package="collective.cmisbrowser" />
 
@@ -15,7 +17,7 @@
   <adapter
      for=".interfaces.ISearchContext"
      provides=".interfaces.ISearchSource"
-     factory=".plone.PloneSearchSource"
+     factory=".default.PloneSearchSource"
      />
 
   <adapter
@@ -23,5 +25,26 @@
      provides=".interfaces.ISearchSource"
      factory=".cmis.CMISSearchSource"
      />
+
+  <adapter
+     for="collective.cmisbrowser.interfaces.ICMISBrowser"
+     provides=".interfaces.ICMISSearchConfiguration"
+     factory=".cmis.CMISSearchConfiguration"
+     />
+
+  <browser:page
+     for="collective.cmisbrowser.interfaces.ICMISBrowser"
+     name="search_settings"
+     class=".cmis.CMISEditSearchSettings"
+     permission="cmf.ModifyPortalContent"
+     />
+
+  <genericsetup:registerProfile
+     name="default"
+     title="collective.cmissearch"
+     directory="profiles/default"
+     description="Extension profile for collective.cmissearch."
+     provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
 
 </configure>

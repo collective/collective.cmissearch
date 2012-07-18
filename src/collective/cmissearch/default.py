@@ -16,6 +16,7 @@ _ = MessageFactory('collective.cmissearch')
 class PloneSearchSource(object):
     implements(ISearchSource)
     priority = 0
+    available = True
 
     @property
     def label(self):
