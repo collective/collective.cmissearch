@@ -51,7 +51,10 @@ class CMISSearchSource(object):
 
     def search(self, SearchableText, batch_position=None, batch_size=10):
         try:
-            self.results = CMISZopeAPI(self.browser).search(SearchableText)
+            self.results = CMISZopeAPI(self.browser).search(
+                SearchableText,
+                quotable=self.settings.quote,
+                scorable=self.settings.score)
         except CMISConnectorError:
             logger.exception(
                 "Error while search results for '%s'", SearchableText)
@@ -91,6 +94,7 @@ class CMISSearchConfiguration(object):
     activated = annotations('collective.cmissearch.activated', True)
     priority = annotations('collective.cmissearch.priority', 10)
     score = annotations('collective.cmissearch.score', True)
+    quote = annotations('collective.cmissearch.quote', False)
 
 
 class CMISEditSearchSettings(EditForm):

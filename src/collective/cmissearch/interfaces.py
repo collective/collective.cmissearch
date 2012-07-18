@@ -31,6 +31,13 @@ class ICMISSearchConfiguration(Interface):
                       u"desactivate this option."),
         default=True,
         required=True)
+    quote = schema.Bool(
+        title=_(u"Quote quote characters in the search terms"),
+        description=_(u"Quote the quote characters in the search terms. "
+                      u"This is not defined by the CMIS norm, and all CMIS server "
+                      u"supports this functionality."),
+        default=False,
+        required=True)
 
 
 class ISearchSource(Interface):
