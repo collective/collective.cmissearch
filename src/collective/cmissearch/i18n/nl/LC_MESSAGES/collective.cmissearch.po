@@ -48,7 +48,7 @@ msgstr "Citeer aanhalingstekens in de zoektermen"
 
 #: ./interfaces.py:36
 msgid "Quote the quote characters in the search terms. This is not defined by the CMIS norm, and all CMIS server supports this functionality."
-msgstr "Citeer aanhalingstekens in de zoektermen. Dit is niet vereist door de CMIS standaard, maar wordt ondersteund door all CMIS servers."
+msgstr "Citeer aanhalingstekens in de zoektermen. Dit is niet vereist door de CMIS standaard, maar wordt ondersteund door alle CMIS servers."
 
 #: ./cmis.py:42
 msgid "Search in ${domain}"
