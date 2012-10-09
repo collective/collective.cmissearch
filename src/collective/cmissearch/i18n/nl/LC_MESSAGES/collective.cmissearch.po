@@ -1,0 +1,64 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# Wim Boucquaert <wim@infrae.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"POT-Creation-Date: 2012-09-21 14:46+0000\n"
+"PO-Revision-Date: 2012-09-21 23:52+0100\n"
+"Last-Translator: Wim Boucquaert <wim@infrae.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: nl\n"
+"Language-Name: Dutch\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"X-is-fallback-for: nl-be nl-nl\n"
+"Domain: collective.cmissearch\n"
+
+#: ./interfaces.py:28
+msgid "Activate CMIS-SCORE function to sort the results"
+msgstr "CMIS-SCORE functie activeren om de resultaten te sorteren"
+
+#: ./interfaces.py:17
+msgid "Activate search in this connector?"
+msgstr "Zoeken activeren voor deze connector?"
+
+#: ./cmis.py:102
+msgid "Configure search related settings."
+msgstr "Configureer zoek gerelateerde instellingen."
+
+#: ./cmis.py:101
+msgid "Edit Search settings"
+msgstr "Pas Zoek instellingen aan"
+
+#: ./interfaces.py:22
+msgid "Higher the priority will be, lower the result block will be displayed in the search results."
+msgstr "Hoe hoger (in numerieke waarde) de prioriteit hoe lager het zoek resultaten blok voor deze 'CMIS Browser' zal verschijnen in de zoek resultaten."
+
+#: ./interfaces.py:21
+msgid "Priority of the search results"
+msgstr "Prioriteit van de zoekresultaten"
+
+#: ./interfaces.py:35
+msgid "Quote quote characters in the search terms"
+msgstr "Citeer aanhalingstekens in de zoektermen"
+
+#: ./interfaces.py:36
+msgid "Quote the quote characters in the search terms. This is not defined by the CMIS norm, and all CMIS server supports this functionality."
+msgstr "Citeer aanhalingstekens in de zoektermen. Dit is niet vereist door de CMIS standaard, maar wordt ondersteund door alle CMIS servers."
+
+#: ./cmis.py:42
+msgid "Search in ${domain}"
+msgstr "Zoek in ${domain}"
+
+#: ./default.py:23
+msgid "Search in ${site}"
+msgstr "Zoek in ${site}"
+
+#: ./interfaces.py:29
+msgid "Some CMIS server doesn't support this functionality. To be able to search content in such server, you must desactivate this option."
+msgstr "Sommige CMIS servers ondersteunen deze optie niet. Om te kunnen zoeken in zo een server mag deze optie niet aangevinkt zijn."
+

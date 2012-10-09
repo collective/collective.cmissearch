@@ -1,0 +1,63 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2012-09-21 14:46+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.cmissearch\n"
+
+#: ./interfaces.py:28
+msgid "Activate CMIS-SCORE function to sort the results"
+msgstr ""
+
+#: ./interfaces.py:17
+msgid "Activate search in this connector?"
+msgstr ""
+
+#: ./cmis.py:102
+msgid "Configure search related settings."
+msgstr ""
+
+#: ./cmis.py:101
+msgid "Edit Search settings"
+msgstr ""
+
+#: ./interfaces.py:22
+msgid "Higher the priority will be, lower the result block will be displayed in the search results."
+msgstr ""
+
+#: ./interfaces.py:21
+msgid "Priority of the search results"
+msgstr ""
+
+#: ./interfaces.py:35
+msgid "Quote quote characters in the search terms"
+msgstr ""
+
+#: ./interfaces.py:36
+msgid "Quote the quote characters in the search terms. This is not defined by the CMIS norm, and all CMIS server supports this functionality."
+msgstr ""
+
+#: ./cmis.py:42
+msgid "Search in ${domain}"
+msgstr ""
+
+#: ./default.py:23
+msgid "Search in ${site}"
+msgstr ""
+
+#: ./interfaces.py:29
+msgid "Some CMIS server doesn't support this functionality. To be able to search content in such server, you must desactivate this option."
+msgstr ""
+

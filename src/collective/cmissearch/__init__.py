@@ -4,3 +4,6 @@
 # $Id$
 
 # This is a package.
+
+def initialize(context):
+    pass
