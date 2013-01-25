@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<portlets>
+
+  <portlet
+     addview="collective.cmissearch.portlet"
+     title="CMIS Search portlet"
+     description="Portlet displaying a search box to search in CMIS."
+     />
+
+</portlets>

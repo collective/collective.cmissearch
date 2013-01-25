@@ -1,0 +1,25 @@
+<tal:portlet i18n:domain="plone">
+  <dl class="portlet search-cmis"
+      tal:condition="view/browser_url">
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span tal:replace="view/browser_title" />
+        <span class="portletTopRight"></span>
+    </dt>
+    <dd class="portletItem">
+      <form method="POST" action="#"
+            tal:attributes="action string:${view/browser_url}/cmis_simple_search">
+         <input type="text" name="SearchableText" placeholder="Search ..."
+                 value=""
+                 tal:attributes="value request/SearchableText | nothing"/>
+         <input type="submit" value="Search" />
+      </form>
+      <br clear="all" />
+    </dd>
+    <dd class="portletFooter">
+        <span class="portletBottomLeft"></span>
+        <span class="portletBottomRight"></span>
+    </dd>
+  </dl>
+</tal:portlet>
+

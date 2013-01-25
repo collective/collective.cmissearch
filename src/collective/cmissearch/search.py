@@ -5,10 +5,14 @@ import operator
 
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.PloneBatch import Batch
 
 from zope.interface import implements
 
 from collective.cmissearch.interfaces import ISearchSource, ISearchContext
+from collective.cmissearch.interfaces import ICMISSearchConfiguration
+from collective.cmisbrowser.cmis.api import CMISZopeAPI
+from collective.cmisbrowser.interfaces import ICMISBrowser
 
 
 class SearchPage(BrowserView):
@@ -47,3 +51,35 @@ class SearchPage(BrowserView):
     def __call__(self):
         self.update()
         return self.index()
+        
+        
+class SimpleSearchPage(BrowserView):
+    batch_size = 25
+
+    def update(self):
+        self.is_searching = 'SearchableText' in self.request.form
+        self.results = []
+        self.count = 0
+        if self.is_searching:
+            try:
+                browser = self.context.getCMISBrowser()
+            except:
+                return
+            if not ICMISBrowser.providedBy(browser):
+                return
+            text = self.request.form['SearchableText']
+            settings = ICMISSearchConfiguration(browser)
+            api = CMISZopeAPI(browser)
+            batch_start = self.request.form.get('b_start', '0')
+            try:
+                batch_start = int(batch_start)
+            except:
+                batch_start = 0
+            self.results = api.search(
+                text, quotable=settings.quote, scorable=settings.score)
+            self.count = len(self.results)
+            self.batch = Batch(self.results, self.batch_size, batch_start)
+
+    def __call__(self):
+        self.update()
+        return self.index() 

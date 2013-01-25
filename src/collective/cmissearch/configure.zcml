@@ -5,9 +5,11 @@
    xmlns:five="http://namespaces.zope.org/five"
    xmlns:zcml="http://namespaces.zope.org/zcml"
    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+   xmlns:plone="http://namespaces.plone.org/plone"
    i18n_domain="collective.cmissearch">
 
   <include package="collective.cmisbrowser" />
+  <include package="plone.app.portlets" />
 
   <five:registerPackage package="." initialize=".initialize" />
   <i18n:registerTranslations directory="i18n" />
@@ -17,6 +19,14 @@
      name="cmis_search"
      class=".search.SearchPage"
      template="templates/searchpage.pt"
+     permission="zope2.View"
+     />
+     
+  <browser:page
+     for="*"
+     name="cmis_simple_search"
+     class=".search.SimpleSearchPage"
+     template="templates/simplesearchpage.pt"
      permission="zope2.View"
      />
 
@@ -52,5 +62,13 @@
      description="Extension profile for collective.cmissearch."
      provides="Products.GenericSetup.interfaces.EXTENSION"
       />
+
+  <plone:portlet
+     name="collective.cmissearch.portlet"
+     interface=".portlets.ISearchPortlet"
+     assignment=".portlets.SearchPortlet"
+     renderer=".portlets.SearchPortletRenderer"
+     addview=".portlets.SearchPortletAddForm"
+     />
 
 </configure>
