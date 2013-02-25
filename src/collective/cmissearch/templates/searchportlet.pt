@@ -9,10 +9,13 @@
     <dd class="portletItem">
       <form method="POST" action="#"
             tal:attributes="action string:${view/browser_url}/cmis_simple_search">
-         <input type="text" name="SearchableText" placeholder="Search ..."
-                 value=""
-                 tal:attributes="value request/SearchableText | nothing"/>
-         <input type="submit" value="Search" />
+         <input type="text" name="SearchableText"
+                value=""
+                title="Search Site"
+                i18n:attributes="title title_search_title;"
+                tal:attributes="value request/SearchableText | nothing"/>
+         <input type="submit" value="Search"
+                i18n:attributes="value label_search;"/>
       </form>
       <br clear="all" />
     </dd>

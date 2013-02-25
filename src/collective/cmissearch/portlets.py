@@ -1,6 +1,5 @@
 
 from zope.interface import implements
-from zope.schema.fieldproperty import FieldProperty
 from zope.cachedescriptors.property import CachedProperty
 
 from plone.app.portlets.portlets import base
