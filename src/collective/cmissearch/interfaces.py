@@ -1,4 +1,4 @@
-# Copyright (c) 2013 Beleidsdomein Leefmilieu, Natuur and Energie (LNE) en Vlaamse Milieumaatschappij (VMM). All rights reserved.
+# Copyright (c) 2013 Beleidsdomein Leefmilieu, Natuur en Energie (LNE) and Vlaamse Milieumaatschappij (VMM). All rights reserved.
 # See also LICENSE.txt
 
 from zope import schema
