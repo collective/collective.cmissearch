@@ -107,6 +107,6 @@ Adding a *CMIS Search portlet*
  - Go to *Manage portlets* in your Plone site were you would like to add
    a CMIS search portlet.
 
- - Select *CMIS Search portlet* from the list.
+ - Select *CMIS Search portlet* from the *Add portlet...* drop-down menu.
 
 .. _CMIS: http://docs.oasis-open.org/cmis/CMIS/v1.0/cs01/cmis-spec-v1.0.html
