@@ -2,6 +2,8 @@
 collective.cmissearch
 =====================
 
+.. contents::
+
 Presentation
 ============
 
