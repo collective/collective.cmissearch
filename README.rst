@@ -5,7 +5,7 @@ collective.cmissearch
 Presentation
 ============
 
-collective.cmissearch is a Plone 3.2+ extension that let you search
+collective.cmissearch is a Plone 3.2+ extension that lets you search
 into a `CMIS`_ document repository from Plone.
 
 *This doesn't integrate the Plone search functionally with external
@@ -13,7 +13,7 @@ into a `CMIS`_ document repository from Plone.
 both in Plone and in an `CMIS`_ repository.
 
 This extension depends on `collective.cmisbrowser`. Each *CMIS
-Browser* will indicate a starting point from which the searches will
+Browser* will indicate a starting point from where the search will
 be done.
 
 Installation
@@ -97,10 +97,10 @@ following parameters:
 
  - Quote quote characters in the search terms. This option quotes the
    quote characters in the search terms. This is not defined by the CMIS
-   norm but all CMIS server supports this functionality.
+   standard but all CMIS server supports this functionality.
 
-Adding a CMIS search portlet
-============================
+Adding a *CMIS Search portlet*
+==============================
 
  - Go to *Manage portlets* in your Plone site were you would like to add
    a CMIS search portlet.
