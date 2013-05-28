@@ -24,9 +24,7 @@ Installation
 Update buildout profile
 -----------------------
 
-Update your buildout profile to include the following eggs and zcml:
-
-::
+Update your buildout profile to include the following eggs and zcml::
 
   eggs +=
       ...
@@ -45,9 +43,7 @@ as an egg.
 Run the buildout
 ----------------
 
-Run the buildout to reflect the changes you made to the profile.
-
-::
+Run the buildout to reflect the changes you made to the profile::
 
   $ bin/buildout -v
 
@@ -65,8 +61,8 @@ Through the ZMI
 
  - Click the *install* button.
 
-Through the *Plone control panel*
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Through the Plone control panel
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  - Go to *Site Setup*.
 
@@ -101,8 +97,8 @@ following parameters:
    quote characters in the search terms. This is not defined by the CMIS
    standard but all CMIS server supports this functionality.
 
-Adding a *CMIS Search portlet*
-==============================
+Adding a CMIS Search portlet
+============================
 
  - Go to *Manage portlets* in your Plone site were you would like to add
    a CMIS search portlet.
